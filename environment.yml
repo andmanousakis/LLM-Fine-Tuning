@@ -1,0 +1,16 @@
+name: llm-assessment
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy=1.26.4
+  - pandas=2.2.2
+  - pip:
+      - datasets==2.19.0
+      - jupyter==1.0.0
+      - safetensors==0.4.3
+      - torch==2.3.0
+      - transformers==4.53.2
+      - plotly==6.2.0
