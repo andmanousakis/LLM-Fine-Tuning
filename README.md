@@ -17,7 +17,7 @@ This repository contains code and documentation for:
 1. Clone repo:
 
 ```bash
-git clone --single-branch --branch development git@github.com:andmanousakis/LLM-Fine-Tuning.git
+git clone --single-branch --branch production git@github.com:andmanousakis/LLM-Fine-Tuning.git
 ```
 
 2. Navigate to the direcotry:
