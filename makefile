@@ -23,8 +23,8 @@ help:
 	@echo "  source venv/bin/activate"
 
 conda:
-	@echo "Creating Conda environment 'llm-assessment' from environment.yml..."
-	conda env create -f environment.yml || echo "If env exists, use 'conda env update -f environment.yml'"
+	@echo "Creating or updating Conda environment 'llm-assessment'..."
+	conda env create -f environment.yml || conda env update -f environment.yml
 	@echo "To activate: conda activate llm-assessment"
 
 clean-conda:
