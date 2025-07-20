@@ -1,3 +1,24 @@
+## [0.2.0] - 2025-07-20
+
+### Added
+- Environment setup for LoRA/QLoRA fine-tuning (peft, bitsandbytes, unsloth, etc.).
+- Quantization configuration (4-bit quantization with QLoRA).
+- LoRA parameter configuration (target modules, rank, alpha).
+- Implemented fine-tuning workflow (Trainer/custom loop) on the 100-example subset.
+- Monitored training loss and metrics.
+- Saved LoRA adapter weights and config (e.g., `adapter_model.safetensors`, `adapter_config.json`).
+- Saved training logs and evaluation metrics (e.g., `training_log.txt`).
+- Generated and displayed responses from the fine-tuned model on test prompts.
+
+### Pending for Milestone 3: API and Containerization (Optional)
+
+- Implement FastAPI service with `/generate` and `/health` endpoints.
+- Add robust validation and error handling in the API.
+- Load base model and LoRA adapters within the API service.
+- Create Dockerfile for containerized inference.
+- Write requirements.txt for API dependencies.
+- Add API usage documentation and Docker instructions in README.
+
 ## [0.1.0] - 2025-07-19
 
 ### Added
@@ -16,20 +37,20 @@
 
 ### Pending for Milestone 2: LLM Fine-tuning with LoRA
 
-- [ ] Environment setup for LoRA/QLoRA fine-tuning (peft, bitsandbytes, unsloth, etc.).
-- [ ] Quantization configuration (4-bit quantization with QLoRA).
-- [ ] LoRA parameter configuration (target modules, rank, alpha).
-- [ ] Implement fine-tuning workflow (Trainer/custom loop) on the 100-example subset.
-- [ ] Monitor training loss and metrics.
-- [ ] Save LoRA adapter weights and config (e.g., `adapter_model.safetensors`, `adapter_config.json`).
-- [ ] Save training logs and evaluation metrics (e.g., `training_log.txt`).
-- [ ] Generate and display responses from the fine-tuned model on test prompts.
+- Environment setup for LoRA/QLoRA fine-tuning (peft, bitsandbytes, unsloth, etc.).
+- Quantization configuration (4-bit quantization with QLoRA).
+- LoRA parameter configuration (target modules, rank, alpha).
+- Implement fine-tuning workflow (Trainer/custom loop) on the 100-example subset.
+- Monitor training loss and metrics.
+- Save LoRA adapter weights and config (e.g., `adapter_model.safetensors`, `adapter_config.json`).
+- Save training logs and evaluation metrics (e.g., `training_log.txt`).
+- Generate and display responses from the fine-tuned model on test prompts.
 
 ### Pending for Milestone 3: API and Containerization (Optional)
 
-- [ ] Implement FastAPI service with `/generate` and `/health` endpoints.
-- [ ] Add robust validation and error handling in the API.
-- [ ] Load base model and LoRA adapters within the API service.
-- [ ] Create Dockerfile (multi-stage) for containerized inference.
-- [ ] Write requirements.txt for API dependencies.
-- [ ] Add API usage documentation and Docker instructions in README.
+- Implement FastAPI service with `/generate` and `/health` endpoints.
+- Add robust validation and error handling in the API.
+- Load base model and LoRA adapters within the API service.
+- Create Dockerfile (multi-stage) for containerized inference.
+- Write requirements.txt for API dependencies.
+- Add API usage documentation and Docker instructions in README.
