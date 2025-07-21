@@ -2,7 +2,7 @@
 
 This project is a solution for the **LLM Fine-tuning Project**, demonstrating practical skills in Large Language Model fine-tuning and deployment.
 
-**Note:** There is automatic detection of GPU. If GPU is not available, it resorts to CPU.
+> **Note:** There is automatic detection of GPU. If GPU is not available, it resorts to CPU.
 
 ## 📖 Overview
 
@@ -117,5 +117,3 @@ This project supports both **GPU** and **CPU-only** environments.
 - CPU with **AVX support** (most modern Intel/AMD processors)
 - At least **8GB RAM**
 - Works for inference, but **fine-tuning is not recommended** on CPU due to long runtimes
-
-> ⚠️ Note: If you are using a CPU-only machine, stick to inference with the pretrained or fine-tuned model. Avoid training unless you know what you're doing and have lots of patience.
