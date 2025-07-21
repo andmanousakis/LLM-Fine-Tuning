@@ -1,16 +1,12 @@
-# File: milestone3_api/main.py
-
 import unsloth
-import traceback
 import os
-import re
 import logging
 import torch
+import traceback
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from peft import PeftModel
 from dotenv import load_dotenv
-from unsloth import FastLanguageModel
 
 # Load .env.
 load_dotenv()
@@ -22,32 +18,43 @@ ADAPTERS_DIR = os.environ.get("ADAPTERS_DIR", os.path.join(BASE_DIR, "adapters")
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Determine device.
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+# Device selection.
+USE_UNSLOTH = torch.cuda.is_available()
+DEVICE = "cuda" if USE_UNSLOTH else "cpu"
 logger.info(f"Using device: {DEVICE}")
 
-# Load model and tokenizer.
+# Conditional imports.
+if USE_UNSLOTH:
+    from unsloth import FastLanguageModel
+else:
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+
 def load_model_and_tokenizer():
-
-    # 
-    logger.info(f"Loading Qwen3-0.6B with Unsloth FastLanguageModel...")
+    logger.info(
+        f"Loading Qwen3-0.6B with {'Unsloth FastLanguageModel' if USE_UNSLOTH else 'vanilla Transformers'}..."
+    )
     try:
-        model, tokenizer = FastLanguageModel.from_pretrained(
-            model_name="Qwen/Qwen3-0.6B",
-            load_in_4bit=(DEVICE == "cuda"),
-        )
-
-        
-        model = PeftModel.from_pretrained(model, ADAPTERS_DIR)
+        if USE_UNSLOTH:
+            model, tokenizer = FastLanguageModel.from_pretrained(
+                model_name="Qwen/Qwen3-0.6B",
+                load_in_4bit=True,
+            )
+            model = PeftModel.from_pretrained(model, ADAPTERS_DIR)
+        else:
+            tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-0.6B")
+            model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen3-0.6B")
+            model = PeftModel.from_pretrained(model, ADAPTERS_DIR)
+            model = model.to(DEVICE)
         logger.info("Model loaded successfully.")
         return model, tokenizer
     except Exception as e:
         logger.error("Failed to load model: %s", str(e))
         raise
+
 model, tokenizer = load_model_and_tokenizer()
 
 # Initialize FastAPI.
-app = FastAPI(title="LLM Inference API (Unsloth)")
+app = FastAPI(title="LLM Inference API (Unsloth or CPU)")
 
 class GenerateRequest(BaseModel):
     prompt: str
@@ -59,7 +66,6 @@ class GenerateResponse(BaseModel):
 async def generate(request: GenerateRequest):
     prompt = request.prompt
 
-    # Validate input.
     if not prompt or not isinstance(prompt, str):
         logger.warning("Invalid prompt received: %s", prompt)
         raise HTTPException(status_code=422, detail="Invalid or missing 'prompt'")
@@ -69,7 +75,6 @@ async def generate(request: GenerateRequest):
         inputs = tokenizer([prompt], return_tensors="pt")
         inputs = {k: v.to(DEVICE) for k, v in inputs.items()}
 
-        # Generate output with controlled decoding.
         with torch.inference_mode():
             output = model.generate(
                 **inputs,
@@ -78,10 +83,7 @@ async def generate(request: GenerateRequest):
                 repetition_penalty=1.5
             )
 
-        # Decode and clean the output.
         response_text = tokenizer.decode(output[0], skip_special_tokens=True).strip()
-
-        # Logging.
         logger.info("Generated response for prompt: %s", prompt)
         return GenerateResponse(response=response_text)
 

@@ -1,10 +1,10 @@
-# File: shell/clean-gpu.sh
+# File: shell/clean.sh
 
 #!/bin/bash
 set -e
 
-IMAGE_NAME="llm-api-gpu"
-CONTAINER_NAME="llm-api-gpu-container"
+IMAGE_NAME="llm-api"
+CONTAINER_NAME="llm-api-container"
 
 echo "Stopping and removing ONLY the $CONTAINER_NAME container (if running)..."
 docker rm -f $CONTAINER_NAME 2>/dev/null || true

@@ -4,9 +4,9 @@ services:
   api:
     build:
       context: ..
-      dockerfile: docker/Dockerfile.gpu
-    image: llm-api-gpu
-    container_name: llm-api-gpu-container
+      dockerfile: docker/Dockerfile
+    image: llm-api
+    container_name: llm-api-container
     ports:
       - "8000:8000"
     volumes:
