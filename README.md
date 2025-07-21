@@ -43,7 +43,7 @@ conda activate llm-assessment
 
 ## 🛸 Milestone 3 Startup
 
-5. **(Optional if already installed) Install NVIDIA Container Toolkit:**
+5. **(Optional if already installed) GPU - Install NVIDIA Container Toolkit:**
 
 ```bash
 make nvidia-container-toolkit
@@ -52,13 +52,13 @@ make nvidia-container-toolkit
 6. **Build and run:**
 
 ```bash
-GPU: make build-gpu
+GPU: make build
 ```
 
 7. **Clean image and containers:**
 
 ```bash
-GPU: make clean-gpu
+GPU: make clean
 ```
 
 8. **API usage examples:**
