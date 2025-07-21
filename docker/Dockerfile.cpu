@@ -1,3 +1,5 @@
+# File: docker/Dockerfile.cpu
+
 FROM python:3.10-slim AS builder
 
 WORKDIR /app
