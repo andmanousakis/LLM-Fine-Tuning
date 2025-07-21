@@ -1,6 +1,9 @@
 ## [0.2.0] - 2025-07-20
 
 ### Added
+
+**Milestone 2: Fine-Tuning**
+
 - Environment setup for LoRA/QLoRA fine-tuning (peft, bitsandbytes, unsloth, etc.).
 - Quantization configuration (4-bit quantization with QLoRA).
 - LoRA parameter configuration (target modules, rank, alpha).
@@ -10,7 +13,7 @@
 - Saved training logs and evaluation metrics (e.g., `training_log.txt`).
 - Generated and displayed responses from the fine-tuned model on test prompts.
 
-### Pending for Milestone 3: API and Containerization (Optional)
+**Milestone 3: API and Containerization**
 
 - Implement FastAPI service with `/generate` and `/health` endpoints.
 - Add robust validation and error handling in the API.
@@ -22,6 +25,9 @@
 ## [0.1.0] - 2025-07-19
 
 ### Added
+
+**Milestone 1: Data Exploration**
+
 - Initial notebook for Milestone 1: Dataset exploration and model setup.
 - Makefile for environment management (conda and venv options).
 - `environment.yml` and `requirements.txt` for reproducible installs.
