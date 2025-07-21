@@ -55,7 +55,7 @@ git clone --single-branch --branch development git@github.com:andmanousakis/LLM-
 cd LLM-Fine-Tuning
 ```
 
-3. **Install NVIDIA Container Toolkit:**
+3. **(Optional if already installed) Install NVIDIA Container Toolkit:**
 
 ```bash
 make nvidia-container-toolkit
