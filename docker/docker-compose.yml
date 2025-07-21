@@ -1,0 +1,20 @@
+# File: docker/docker-compose.yml
+
+services:
+  api:
+    image: llm-api
+    container_name: llm-api-container
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../.env
+    volumes:
+      - ../adapters:/app/adapters
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
