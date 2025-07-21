@@ -1,4 +1,3 @@
-import unsloth
 import os
 import logging
 import torch
@@ -8,6 +7,14 @@ from pydantic import BaseModel
 from peft import PeftModel
 from dotenv import load_dotenv
 
+# Device selection.
+USE_UNSLOTH = torch.cuda.is_available()
+DEVICE = "cuda" if USE_UNSLOTH else "cpu"
+
+if USE_UNSLOTH:
+    import unsloth  # Do this first if CUDA is available
+
+# Now continue with everything else...
 # Load .env.
 load_dotenv()
 
@@ -18,9 +25,6 @@ ADAPTERS_DIR = os.environ.get("ADAPTERS_DIR", os.path.join(BASE_DIR, "adapters")
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Device selection.
-USE_UNSLOTH = torch.cuda.is_available()
-DEVICE = "cuda" if USE_UNSLOTH else "cpu"
 logger.info(f"Using device: {DEVICE}")
 
 # Conditional imports.
