@@ -28,9 +28,13 @@ clean-conda:
 	@echo "Removing Conda environment 'llm-assessment'..."
 	conda env remove -n llm-assessment -y
 
-build:
-	chmod +x shell/build-and-run.sh
-	shell/build-and-run.sh
+build-gpu:
+	chmod +x shell/build-and-run-gpu.sh
+	shell/build-and-run-gpu.sh
+
+build-cpu:
+	chmod +x shell/build-and-run-cpu.sh
+	shell/build-and-run-cpu.sh
 
 clean-build:
 	chmod +x shell/clean.sh

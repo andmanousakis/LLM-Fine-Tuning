@@ -52,13 +52,13 @@ make nvidia-container-toolkit
 6. **Build and run:**
 
 ```bash
-make build
+GPU: make build-gpu
 ```
 
 7. **Clean image and containers:**
 
 ```bash
-make clean-build
+GPU: make clean-gpu
 ```
 
 8. **API usage examples:**
