@@ -32,13 +32,13 @@ cd LLM-Fine-Tuning
 make conda
 ```
 
-3. **Activate conda env:**
+3. **(Optional) Activate conda env:** 
 
 ```bash
 conda activate llm-assessment
 ```
 
-4. **Run the notebooks.**
+4. **Run the notebooks. Do not forget to select kernel: `llm-assessment`**
 
 
 ## 🛸 Milestone 3 Startup
@@ -86,7 +86,7 @@ curl http://localhost:8000/health
 ```bash
 curl -X POST http://localhost:8000/generate \
   -H "Content-Type: application/json" \
-  -d '{"prompt": "What is the capital of France?"}'
+  -d '{"prompt": "What is the capital of France?"}' | jq
 ```
 
 - Missing prompt:
@@ -94,7 +94,7 @@ curl -X POST http://localhost:8000/generate \
 ```bash
 curl -X POST http://localhost:8000/generate \
   -H "Content-Type: application/json" \
-  -d '{}'
+  -d '{}' | jq
 ```
 
 - Null prompt:
@@ -102,7 +102,7 @@ curl -X POST http://localhost:8000/generate \
 ```bash
 curl -X POST http://localhost:8000/generate \
   -H "Content-Type: application/json" \
-  -d '{"prompt": null}'
+  -d '{"prompt": null}' | jq
 ```
 
 - Malformed JSON :
@@ -110,7 +110,7 @@ curl -X POST http://localhost:8000/generate \
 ```bash
 curl -X POST http://localhost:8000/generate \
   -H "Content-Type: application/json" \
-  -d '{"prompt": "test"'
+  -d '{"prompt": "test"' | jq
 ```
 
 ### 🔧 Hardware Requirements
