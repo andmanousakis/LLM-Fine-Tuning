@@ -2,6 +2,8 @@
 
 This project is a solution for the **LLM Fine-tuning Project**, demonstrating practical skills in Large Language Model fine-tuning and deployment.
 
+**Note:** There is automatic detection of GPU. If GPU is not available, it resorts to CPU.
+
 ## 📖 Overview
 
 This repository contains code and documentation for:
