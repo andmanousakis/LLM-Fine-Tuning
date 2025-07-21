@@ -12,7 +12,7 @@ USE_UNSLOTH = torch.cuda.is_available()
 DEVICE = "cuda" if USE_UNSLOTH else "cpu"
 
 if USE_UNSLOTH:
-    import unsloth  # Do this first if CUDA is available
+    import unsloth
 
 # Now continue with everything else...
 # Load .env.
