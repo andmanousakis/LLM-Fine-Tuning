@@ -43,37 +43,25 @@ conda activate llm-assessment
 
 ## 🛸 Milestone 3 Startup
 
-1. **Clone repo:**
-
-```bash
-git clone --single-branch --branch development git@github.com:andmanousakis/LLM-Fine-Tuning.git
-```
-
-2. **Navigate to the direcotry:**
-
-```bash
-cd LLM-Fine-Tuning
-```
-
-3. **(Optional if already installed) Install NVIDIA Container Toolkit:**
+5. **(Optional if already installed) Install NVIDIA Container Toolkit:**
 
 ```bash
 make nvidia-container-toolkit
 ```
 
-4. **Build and run:**
+6. **Build and run:**
 
 ```bash
 make build
 ```
 
-5. **Clean image and containers:**
+7. **Clean image and containers:**
 
 ```bash
 make clean-build
 ```
 
-6. **API usage examples:**
+8. **API usage examples:**
 
 - Health check:
 
