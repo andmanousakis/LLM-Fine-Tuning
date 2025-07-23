@@ -2,8 +2,6 @@
 
 This project is a solution for the **LLM Fine-tuning Project**, demonstrating practical skills in Large Language Model fine-tuning and deployment.
 
-> **Note:** There is automatic detection of GPU. If GPU is not available, it resorts to CPU.
-
 ## 📖 Overview
 
 This repository contains code and documentation for:
@@ -105,15 +103,10 @@ curl -X POST http://localhost:8000/generate \
 
 ### 🔧 Hardware Requirements
 
-This project supports both **GPU** and **CPU-only** environments.
+This project supports **GPU** environments.
 
 #### Recommended (GPU Setup)
 - NVIDIA GPU with **8GB+ VRAM** for fast inference
 - [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) installed
 - Docker with GPU support (`nvidia-docker`)
 - At least **8GB RAM**
-
-#### Minimum (CPU-only Setup)
-- CPU with **AVX support** (most modern Intel/AMD processors)
-- At least **8GB RAM**
-- Works for inference, but **fine-tuning is not recommended** on CPU due to long runtimes
