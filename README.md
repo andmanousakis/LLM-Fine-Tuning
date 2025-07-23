@@ -1,6 +1,6 @@
 # LLM Fine-tuning
 
-This project is a solution for the **LLM Fine-tuning Project**, demonstrating practical skills in Large Language Model fine-tuning and deployment.
+This project demonstrates practical skills in **Large Language Model fine-tuning and deployment**.
 
 ## 📖 Overview
 
